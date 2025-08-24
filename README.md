@@ -1,22 +1,87 @@
-CppFreeMock
-===========
+# CppFreeMock
 
-Based on gmock, can mock global function, member function, class static function without change source code.
+CppFreeMock is a header only library for mocking functions in C++.
+The project is based from [gzc9047](https://github.com/gzc9047/CppFreeMock#), merging the win32 platform support from
+[zadockmaloba](https://github.com/zadockmaloba/CppFreeMock).
 
-[Here](https://onedrive.live.com/redir.aspx?cid=4c6fdc828365b80e&page=view&resid=4C6FDC828365B80E!28191&parId=4C6FDC828365B80E!28141&authkey=!AtpjZailG7DIcVg&Bpub=SDX.SkyDrive&Bsrc=Share) is the document and design notes host on OneNote.
+The project is restructed for better import to an exsting project.
 
-Hello world:
+# Requirements
 
+- gtest and gmock (make sure can be static linked with command -lgtest -lgmock)
+- c++ (ISO C++ standard  >=14)
+
+# Usage
+Copy the cpp_free_mock directory to your project include directory, make sure the build tool can find the header.
+
+`cp -r cpp_free_mock ${CURRENT_SOURCE_DIR}/include/`
+- Blade: TODO
+- CMakeLists.txt:
+```Cmake
+include_directories(
+    ${CURRENT_SOURCE_DIR}/include/
+)
+```
+- Makefile:
+```Makefile
+CPPFLAGS += -I ${CURRENT_SOURCE_DIR}/include/ 
+```
+
+
+
+# Compile commands
+
+
+# Example
+1. Without main function
 ```cpp
-string func() {
+#include <gmock/gmock.h>
+#include <gtest/gtest.h>
+#include "cpp_free_mock/cpp_free_mock.h"
+
+using namespace ::testing;
+
+std::string func() {
     return "Non mocked.";
 }
 
 TEST(HelloWorld, First) {
-    EXPECT_CALL(*MOCKER(func), MOCK_FUNCTION()).Times(Exactly(1))
+    EXPECT_CALL(*MOCKER(func), MOCK_FUNCTION())
+        .Times(Exactly(1))
         .WillOnce(Return("Hello world."));
     EXPECT_EQ("Hello world.", func());
 }
 ```
+Compile the test file without main function
+```
+g++ -O2 -std=c++14 hello_world.cpp -I .. -lgtest -lgtest_main -lgmock
+```
 
-[Here](https://github.com/gzc9047/cpp_non_virtual_mock) is the prototype when I try to solve this problem.
+2. With main function
+```cpp
+#include <gmock/gmock.h>
+#include <gtest/gtest.h>
+#include "cpp_free_mock/cpp_free_mock.h"
+
+using namespace ::testing;
+
+std::string func() {
+    return "Non mocked.";
+}
+
+TEST(HelloWorld, First) {
+    EXPECT_CALL(*MOCKER(func), MOCK_FUNCTION())
+        .Times(Exactly(1))
+        .WillOnce(Return("Hello world."));
+    EXPECT_EQ("Hello world.", func());
+}
+
+int main(int argc, char *argv[]){
+    InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();  
+}
+```
+Compile the test file with main function, no need to link gtest_main
+```
+g++ -O2 -std=c++14 hello_world.cpp -I .. -lgtest -lgmock
+```

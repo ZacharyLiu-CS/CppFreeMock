@@ -5,8 +5,7 @@
 //
 // Basic template type, must be specialization.
 
-#ifndef CPP_FREE_MOCK_CPP11_BASIC_TYPE_H_
-#define CPP_FREE_MOCK_CPP11_BASIC_TYPE_H_
+#pragma once
 
 namespace CppFreeMock {
 
@@ -32,4 +31,3 @@ struct SimpleSingleton {
 
 } // namespace CppFreeMock
 
-#endif // CPP_FREE_MOCK_CPP11_BASIC_TYPE_H_

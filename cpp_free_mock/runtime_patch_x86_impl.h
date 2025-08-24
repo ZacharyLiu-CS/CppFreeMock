@@ -5,8 +5,7 @@
 //
 // Implement runtime patch in x86 architecture.
 
-#ifndef CPP_FREE_MOCK_X86_RUNTIME_PATCH_IMPL_H_
-#define CPP_FREE_MOCK_X86_RUNTIME_PATCH_IMPL_H_
+#pragma once
 
 #include <cstddef>
 #include <cstdint>
@@ -81,5 +80,3 @@ namespace RuntimePatcherImpl {
 }
 
 } // namespace CppFreeMock
-
-#endif // CPP_FREE_MOCK_X86_RUNTIME_PATCH_IMPL_H_

@@ -5,8 +5,7 @@
 //
 // Check os and include the special implement.
 
-#ifndef CPP_FREE_MOCK_RUNTIME_PATCH_H_
-#define CPP_FREE_MOCK_RUNTIME_PATCH_H_
+#pragma once
 
 #include <vector>
 
@@ -24,15 +23,15 @@ namespace RuntimePatcherImpl {
 } // namespace CppFreeMock
 
 #if defined(__x86_64__) || defined(__i386__)
-#include "x86/runtime_patch_impl.h"
+#include "runtime_patch_x86_impl.h"
 #endif
 
 #ifdef __APPLE__
-#include "posix/runtime_patch_impl.h"
+#include "runtime_patch_posix_impl.h"
 #elif __linux__
-#include "posix/runtime_patch_impl.h"
+#include "runtime_patch_posix_impl.h"
 #elif WIN32
-#include "win32/runtime_patch_impl.h"
+#include "runtime_patch_win32_impl.h"
 #endif
 
 namespace CppFreeMock {
@@ -58,4 +57,3 @@ struct RuntimePatcher {
 
 } // namespace CppFreeMock
 
-#endif // CPP_FREE_MOCK_RUNTIME_PATCH_H_

@@ -5,11 +5,13 @@
 //
 // This file contains user level macro.
 // User can only use the symbols in this file.
+#pragma once
 
-#ifndef CPP_FREE_MOCK_CPP_FREE_MOCK_H_
-#define CPP_FREE_MOCK_CPP_FREE_MOCK_H_
+#include "impl.h"
 
-#include "internal_macro.h"
+#define MOCKER_INTERNAL(function, identity) \
+    ::CppFreeMock::MockerCreator::GetMocker<::CppFreeMock::TypeForUniqMocker<identity>>(function, #function)
+
 
 // mocker is the variable name in user code.
 // Used to create:
@@ -24,4 +26,3 @@
 // Used in EXPECT_CALL(*mocker, MOCK_FUNCTION(_))
 #define MOCK_FUNCTION CppFreeMockStubFunction
 
-#endif // CPP_FREE_MOCK_CPP_FREE_MOCK_H_

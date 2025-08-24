@@ -5,8 +5,7 @@
 //
 // Implement CppFreeMock::RuntimePatcherImpl::UnprotectMemory in posix.
 
-#ifndef CPP_FREE_MOCK_POSIX_RUNTIME_PATCH_IMPL_H_
-#define CPP_FREE_MOCK_POSIX_RUNTIME_PATCH_IMPL_H_
+#pragma once
 
 #include <cerrno>
 
@@ -42,4 +41,3 @@ namespace RuntimePatcherImpl {
 
 } // namespace CppFreeMock
 
-#endif // CPP_FREE_MOCK_POSIX_RUNTIME_PATCH_IMPL_H_

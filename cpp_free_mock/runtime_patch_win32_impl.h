@@ -1,5 +1,4 @@
-#ifndef CPP_FREE_MOCK_WIN32_RUNTIME_PATCH_IMPL_H
-#define CPP_FREE_MOCK_WIN32_RUNTIME_PATCH_IMPL_H
+#pragma once
 
 #include <cerrno>
 
@@ -47,4 +46,3 @@ static int UnprotectMemoryForOnePage(void* const address) {
 } // namespace CppFreeMock
 
 
-#endif // CPP_FREE_MOCK_WIN32_RUNTIME_PATCH_IMPL_H

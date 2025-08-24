@@ -13,7 +13,7 @@
 #include "gmock/gmock.h"
 #include "gtest/gtest.h"
 
-#include "cpp_free_mock.h"
+#include "cpp_free_mock/cpp_free_mock.h"
 
 #include <functional>
 #include <iostream>

@@ -5,10 +5,9 @@
 //
 // Implement under c++11.
 
-#ifndef CPP_FREE_MOCK_CPP11_IMPL_H_
-#define CPP_FREE_MOCK_CPP11_IMPL_H_
+#pragma once
 
-#include "cpp11/basic_type.h"
+#include "basic_type.h"
 
 #include "runtime_patch.h"
 
@@ -222,4 +221,3 @@ public:
 
 } // namespace CppFreeMock
 
-#endif // CPP_FREE_MOCK_CPP11_IMPL_H_

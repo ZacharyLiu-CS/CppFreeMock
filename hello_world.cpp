@@ -9,7 +9,7 @@
 #include "gtest/gtest.h"
 
 // I don't include gmock.h in my code, so please make sure that it included before mine.
-#include "cpp_free_mock.h"
+#include "cpp_free_mock/cpp_free_mock.h"
 
 #include <iostream>
 
